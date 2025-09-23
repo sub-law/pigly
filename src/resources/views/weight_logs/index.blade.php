@@ -3,7 +3,7 @@
 @section('title', '体重管理画面')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/top.css') }}">
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')

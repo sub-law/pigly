@@ -15,7 +15,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/weight_logs', [Weight_logsController::class, 'top'])->name('top');
+Route::get('/weight_logs', [Weight_logsController::class, 'index'])->name('index');
 Route::post('/weight_logs/create', [Weight_logsController::class, 'create'])->name('create');
 Route::get('/weight_logs/search', [Weight_logsController::class, 'search'])->name('search');
 Route::get('/weight_logs/{:weightLogId}', [Weight_logsController::class, 'detail'])->name('detail');

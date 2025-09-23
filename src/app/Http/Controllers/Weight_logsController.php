@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class Weight_logsController extends Controller
 {
-    public function top()
+    public function index()
     {
 
-        return view('weight_logs.top');
+        return view('weight_logs.index');
 
     }
 
