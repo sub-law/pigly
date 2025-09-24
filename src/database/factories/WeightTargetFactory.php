@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 class WeightTargetFactory extends Factory
 {
@@ -14,7 +15,8 @@ class WeightTargetFactory extends Factory
     public function definition()
     {
         return [
-            'target_weight' => $this->faker->randomFloat(1, 50, 100),
+            'user_id' => User::factory(),
+            'target_weight' => 65.0,
         ];
     }
 }

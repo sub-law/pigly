@@ -7,28 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title', 'PiGly')</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/app.css') }}">
     @yield('styles')
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="header__inner">
-            <p class="header__logo">PiGly</p>
-            <a href="{{ route('goal_setting') }}">目標体重設定</a>
-            <a href="{{ route('login') }}">ログアウト</a>
-            <div class="header__nav">
-                @hasSection('header-links')
-                @yield('header-links')
-                @endif
-            </div>
+    {{-- ヘッダー --}}
+    <header class="main-header">
+        <div class="header-left">
+            <h1 class="logo">PiGLy</h1>
+        </div>
+        <div class="header-right">
+            <a href="{{ route('goal_setting') }}" class="btn goal-btn">目標体重の再設定</a>
+            <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                @csrf
+                <button type="submit" class="btn logout-btn">ログアウト</button>
+            </form>
         </div>
     </header>
 
-    <main>
+
+    {{-- メインコンテンツ --}}
+    <main class="main-content">
         @yield('content')
     </main>
+
 </body>
 
 </html>

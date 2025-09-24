@@ -2,38 +2,31 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>初期体重登録</title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <meta charset="UTF-8">
+    <title>PiGLy 初期設定 STEP2</title>
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
 
-<body>
+<body class="auth-screen">
+    <div class="auth-box">
+        <h1>PiGLy</h1>
+        <p>STEP2 体重データの入力</p>
 
-    <header class="header">
-        <div class="header__inner">
+        <form method="POST" action="{{ route('step2') }}">
+            @csrf
 
-        </div>
-    </header>
+            <label for="current_weight">現在の体重 (kg)</label>
+            <input type="number" step="0.1" name="current_weight" id="current_weight"
+                placeholder="現在の体重を入力" required>
 
-    <main>
+            <label for="target_weight">目標の体重 (kg)</label>
+            <input type="number" step="0.1" name="target_weight" id="target_weight"
+                placeholder="目標の体重を入力" required>
 
-        <h1>PiGly</h1>
-        <h2>新規会員登録</h2>
+            <button type="submit">アカウント作成</button>
+        </form>
 
-        <h3>STEP2 体重データの入力</h3>
-
-        <div class="a">
-            <p>現在の体重</p>
-            <p>目標の体重</p>
-        </div>
-
-        <div class="b">
-            <a href="{{ route('top') }}">アカウント作成</a>
-        </div>
-    </main>
+    </div>
 </body>
 
 </html>

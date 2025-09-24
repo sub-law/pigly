@@ -2,40 +2,36 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>新規登録</title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <meta charset="UTF-8">
+    <title>PiGLy 新規登録</title>
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
 
-<body>
+<body class="auth-screen">
+    <div class="auth-box">
+        <h1>PiGLy</h1>
+        <p>新規登録</p>
 
-    <header class="header">
-        <div class="header__inner">
+        <form method="POST" action="{{ route('step1') }}">
+            @csrf
 
+            <label for="name">名前</label>
+            <input type="text" name="name" id="name" placeholder="名前を入力" required>
+
+            <label for="email">メールアドレス</label>
+            <input type="email" name="email" id="email" placeholder="メールアドレスを入力" required>
+
+            <label for="password">パスワード</label>
+            <input type="password" name="password" id="password" placeholder="パスワードを入力" required>
+
+            <button type="submit">次に進む</button>
+        </form>
+
+
+        <div class="link">
+            <a href="{{ route('login') }}">ログインはこちら</a>
         </div>
-    </header>
-
-    <main>
-
-        <h1>PiGly</h1>
-        <h2>新規会員登録</h2>
-        <h3>STEP1 アカウント情報の登録</h3>
-
-        <div class="a">
-            <p>お名前</p>
-            <p>メールアドレス</p>
-            <p>パスワード</p>
-        </div>
-
-        <div class="b">
-            <a href="{{ route('step2')}}">次に進む</a>
-            </br>
-            <a href="{{ route('login')}}">ログインはこちら</a>
-        </div>
-    </main>
+    </div>
 </body>
 
 </html>

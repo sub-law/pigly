@@ -1,24 +1,125 @@
-.b{
-    display: flex;
-    justify-content: space-between;
+/* 全体レイアウト */
+.dashboard-container {
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
-.c {
+/* グリッドA：目標体重情報 */
+.grid-a {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2rem;
 }
 
-.d {
-    display: flex;
-    justify-content: space-between;
+.metric-box {
+    background-color: #f0f4ff;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
 }
 
-.e {
-    display: flex;
-    justify-content: space-between;
+.metric-box:hover {
+    background-color: #e0e8ff;
 }
 
-.f {
+.metric-box .label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.metric-box .value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* グリッドB：検索と追加ボタン */
+.grid-b-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.grid-b-header form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.grid-b-header select,
+.grid-b-header button,
+.grid-b-header a.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.grid-b-header button:hover,
+.grid-b-header a.btn:hover {
+    background-color: #edf2f7;
+}
+
+/* ログテーブル */
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.log-table th,
+.log-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.log-table th {
+    background-color: #f7fafc;
+    font-weight: bold;
+    color: #333;
+}
+
+.log-table tr:hover {
+    background-color: #f0f4ff;
+}
+
+/* 操作アイコン */
+.icon {
+    font-size: 1.2rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* ページネーション */
+.pagination {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.pagination .page-link {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #edf2f7;
 }

@@ -29,5 +29,10 @@ PHPコンテナから出る　Ctrl+D
 初期体重登録画面：http://localhost/register/step2
 ログイン画面：http://localhost/login
 
+
+ダミーデータ
+email:shota87@example.net
+パスワード:password
+
 ER図
 ![alt text](er.png)
