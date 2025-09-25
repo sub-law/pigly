@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\WeightLog;
+use App\Models\WeightTarget;
 
 class User extends Authenticatable
 {
@@ -41,12 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function weightTarget()
     {
         return $this->hasOne(WeightTarget::class);
     }
 
-    public function weightLogs()
+    public function weightLogs()//←husmanyの場合は複数形になる
     {
         return $this->hasMany(WeightLog::class);
     }

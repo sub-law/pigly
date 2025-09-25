@@ -18,7 +18,14 @@ composer install
 .env 作成 
 cp .env.example .env
 
-アプリキー生成 php artisan key:generate
+アプリキー生成 
+php artisan key:generate
+
+マイグレーションの実行
+php artisan migrate
+
+ダミーデータの作成 
+php artisan db:seed
 
 PHPコンテナから出る　Ctrl+D
 
@@ -30,7 +37,8 @@ PHPコンテナから出る　Ctrl+D
 ログイン画面：http://localhost/login
 
 
-ダミーデータ
+～ダミーデータ～
+ユーザー詳細
 email:shota87@example.net
 パスワード:password
 

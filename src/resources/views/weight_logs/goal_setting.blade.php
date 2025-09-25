@@ -7,20 +7,28 @@
 @endsection
 
 @section('content')
-<div class="a">
-    <div class="b">
-        <p>目標体重設定</p>
-        <p>目標まで</p>
+<div class="goal-setting-container">
+    <div class="goal-setting-box">
+        <h2>目標体重設定</h2>
 
-    </div>
-    <div class="e">
-        <div class="c">
-            <a href="{{ route('top') }}">戻る</a>
-        </div>
+        <form method="POST" action="{{ route('goal_setting.update') }}">
+            @csrf
+            @method('PUT')
 
-        <div class="d">
-            <p>更新</p>
-        </div>
+            <div class="input-group">
+                <input type="number" step="0.1" name="target_weight" value="{{ old('target_weight', $targetWeight) }}" required>
+                <span class="unit">kg</span>
+            </div>
+
+            @error('target_weight')
+            <p class="error">{{ $message }}</p>
+            @enderror
+
+            <div class="button-group">
+                <a href="{{ route('weight_logs.index') }}" class="btn back-btn">戻る</a>
+                <button type="submit" class="btn update-btn">更新</button>
+            </div>
+        </form>
     </div>
 </div>
 @endsection
