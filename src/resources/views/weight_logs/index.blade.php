@@ -32,10 +32,14 @@
     {{-- グリッドB：体重ログ一覧 --}}
     <div class="grid-b">
         <div class="grid-b-header">
-            <form method="GET" action="{{ route('search') }}">
-                <select name="from_date">...</select>
-                <select name="to_date">...</select>
+            <form method="GET" action="{{ route('weight_logs.search') }}">
+                <input type="date" name="from_date" value="{{ request('from_date') }}" class="date-input">
+                <p>～</p>
+                <input type="date" name="to_date" value="{{ request('to_date') }}" class="date-input">
                 <button type="submit" class="btn search-btn">検索</button>
+                @if(request('from_date') || request('to_date'))
+                <a href="{{ route('weight_logs.index') }}" class="btn reset-btn">リセット</a>
+                @endif
             </form>
 
             <!-- トリガー -->
@@ -46,38 +50,56 @@
         <div id="modal-overlay" class="modal-overlay hidden"></div>
 
         <!-- モーダル本体 -->
-        <div id="modal" class="modal hidden">
+
+        <div id="modal" class="modal {{ $errors->any() ? '' : 'hidden' }}">
             <form method="POST" action="{{ route('weight_logs.store') }}">
                 @csrf
+
                 <label class="form-label">
                     日付 <span class="required-tag">必須</span>
                 </label>
-                <input type="date" name="date" value="{{ date('Y-m-d') }}" required>
+                <input type="date" name="date" value="{{ date('Y-m-d') }}">
+                @error('date')
+                <div class="error-text">{{ $message }}</div>
+                @enderror
 
                 <label class="form-label">
                     体重 <span class="required-tag">必須</span>
                 </label>
                 <div class="input-with-unit">
-                    <input type="number" name="weight" step="0.1" required>
+                    <input type="number" name="weight" step="0.1">
                     <span class="unit">kg</span>
+                    @error('weight')
+                    <div class="error-text">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <label class="form-label">
                     摂取カロリー <span class="required-tag">必須</span>
                 </label>
                 <div class="input-with-unit">
-                    <input type="number" name="calories" required>
+                    <input type="number" name="calories">
                     <span class="unit">cal</span>
+                    @error('calories')
+                    <div class="error-text">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <label class="form-label">
                     運動時間 <span class="required-tag">必須</span>
                 </label>
-                <input type="time" name="exercise_time" required>
-
+                <div class="input-with-unit">
+                    <input type="time" name="exercise_time">
+                    @error('exercise_time')
+                    <div class="error-text">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <label>運動内容</label>
-                <textarea name="exercise_detail"></textarea>
+                <textarea name="exercise_content"></textarea>
+                @error('exercise_content')
+                <div class="error-text">{{ $message }}</div>
+                @enderror
 
                 <div class="modal-buttons">
                     <button type="submit" class="btn-submit">登録</button>
@@ -86,6 +108,7 @@
 
             </form>
         </div>
+
 
 
 
@@ -114,7 +137,7 @@
                     <td>{{ $parts[0] }}時間{{ $parts[1] }}分</td>
 
                     <td>
-                        <a href="{{ route('weight_logs.detail', $log->id) }}" class="icon edit-icon">✏️</a>
+                        <a href="{{ route('weight_logs.edit', $log->id) }}" class="icon edit-icon">✏️</a>
                     </td>
                 </tr>
                 @endforeach

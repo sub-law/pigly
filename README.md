@@ -29,16 +29,12 @@ php artisan db:seed
 
 PHPコンテナから出る　Ctrl+D
 
-体重管理画面：http://localhost/weight_logs
-目標設定：http://localhost/wight_logs/goal_setting
-
 新規登録画面：http://localhost/register/step1
-初期体重登録画面：http://localhost/register/step2
 ログイン画面：http://localhost/login
-
 
 ～ダミーデータ～
 ユーザー詳細
+name:テスト太郎
 email:shota87@example.net
 パスワード:password
 

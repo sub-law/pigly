@@ -11,12 +11,12 @@
     <div class="goal-setting-box">
         <h2>目標体重設定</h2>
 
-        <form method="POST" action="{{ route('goal_setting.update') }}">
+        <form method="POST" action="{{ route('weight_logs.goal_setting.update') }}">
             @csrf
             @method('PUT')
 
             <div class="input-group">
-                <input type="number" step="0.1" name="target_weight" value="{{ old('target_weight', $targetWeight) }}" required>
+                <input type="number" step="0.1" name="target_weight" value="{{ old('target_weight', $targetWeight) }}" >
                 <span class="unit">kg</span>
             </div>
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Weight_logsController;
+use App\Http\Controllers\WeightLogsController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -15,30 +15,24 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-//Route::get('/weight_logs', [Weight_logsController::class, 'index'])->name('index');
-Route::get('/weight_logs', [Weight_logsController::class, 'index'])->name('weight_logs.index');
+Route::get('/weight_logs', [WeightLogsController::class, 'index'])->name('weight_logs.index');
 
-Route::get('/weight_logs/create', [Weight_logsController::class, 'create'])->name('weight_logs.create');
-Route::post('/weight_logs', [Weight_logsController::class, 'store'])->name('weight_logs.store');
+Route::get('/weight_logs/create', [WeightLogsController::class, 'create'])->name('weight_logs.create');
+Route::post('/weight_logs', [WeightLogsController::class, 'store'])->name('weight_logs.store');
 
-//Route::get('/weight_logs/{:weightLogId}', [Weight_logsController::class, 'detail'])->name('detail');
-//Route::post('/weight_logs/{:weightLogId}/update', [Weight_logsController::class, 'update'])->name('update'); //未実装
-//Route::delete('/weight_logs/{:weightLogId}/delete', [Weight_logsController::class, 'delete'])->name('delete'); //未実装
+Route::get('/weight_logs/goal_setting', [WeightLogsController::class, 'goal_setting'])->name('weight_logs.goal_setting');
+Route::PUT('/weight_logs/goal_setting', [WeightLogsController::class, 'updateGoal'])->name('weight_logs.goal_setting.update');
 
-Route::get('/weight_logs/{weightLogId}', [Weight_LogsController::class, 'detail'])->name('weight_logs.detail');
-Route::post('/weight_logs/{weightLogId}/update', [Weight_LogsController::class, 'update'])->name('weight_logs.update');
-Route::delete('/weight_logs/{weightLogId}/delete', [Weight_LogsController::class, 'delete'])->name('weight_logs.delete');
+Route::get('/weight_logs/search', [WeightLogsController::class, 'search'])->name('weight_logs.search');
 
+Route::get('/weight_logs/{weightLogId}', [WeightLogsController::class, 'edit'])->name('weight_logs.edit');
+Route::put('/weight_logs/{weightLogId}/update', [WeightLogsController::class, 'update'])->name('weight_logs.update');
 
-Route::get('/weight_logs/search', [Weight_logsController::class, 'search'])->name('search');
+Route::delete('/weight_logs/{weightLogId}/delete', [WeightLogsController::class, 'delete'])->name('weight_logs.delete');
 
-
-
-Route::get('/weight_logs/goal_setting', [Weight_logsController::class, 'goal_setting'])->name('goal_setting');
-Route::PUT('/weight_logs/goal_setting', [Weight_logsController::class, 'update'])->name('goal_setting.update');
-
-Route::get('/register/step1', [RegisterController::class, 'step1'])->name('step1');//未実装
-Route::get('/register/step2', [RegisterController::class, 'step2'])->name('step2');//未実装
+Route::get('/register/step1', [RegisterController::class, 'step1'])->name('step1'); Route::post('/register/step1', [RegisterController::class, 'postStep1'])->name('postStep1');
+Route::get('/register/step2', [RegisterController::class, 'step2'])->name('step2');
+Route::post('/register/step2', [RegisterController::class, 'postStep2'])->name('postStep2');
 
 Route::get('/login', [RegisterController::class, 'login'])->name('login');
 Route::post('/logout', [RegisterController::class, 'logout'])->name('logout');

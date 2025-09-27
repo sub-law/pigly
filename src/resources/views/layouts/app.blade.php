@@ -19,7 +19,7 @@
             <h1 class="logo">PiGLy</h1>
         </div>
         <div class="header-right">
-            <a href="{{ route('goal_setting') }}" class="btn goal-btn">目標体重の再設定</a>
+            <a href="{{ route('weight_logs.goal_setting') }}" class="btn goal-btn">目標体重の再設定</a>
             <form method="POST" action="{{ route('logout') }}" class="logout-form">
                 @csrf
                 <button type="submit" class="btn logout-btn">ログアウト</button>
