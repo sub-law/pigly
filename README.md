@@ -1,4 +1,3 @@
-# laravel-setup-base
 プロジェクト直下に.envを作成（既にファイルがあり以下の記述があれば不要）
 touch .env
 
@@ -35,8 +34,13 @@ PHPコンテナから出る　Ctrl+D
 ～ダミーデータ～
 ユーザー詳細
 name:テスト太郎
-email:shota87@example.net
+email:test@example.com
 パスワード:password
 
 ER図
 ![alt text](er.png)
+
+🧪 使用技術 
+php:8.1-fpm 
+Laravel Framework 8.83.8 
+MySQL 8.0.26
