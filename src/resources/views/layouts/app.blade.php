@@ -13,17 +13,22 @@
 
 <body>
 
-    {{-- ヘッダー --}}
     <header class="main-header">
         <div class="header-left">
             <h1 class="logo">PiGLy</h1>
         </div>
+
         <div class="header-right">
-            <a href="{{ route('weight_logs.goal_setting') }}" class="btn goal-btn">目標体重の再設定</a>
-            <form method="POST" action="{{ route('logout') }}" class="logout-form">
-                @csrf
-                <button type="submit" class="btn logout-btn">ログアウト</button>
-            </form>
+            <div class="setting-group">
+                <a href="{{ route('weight_logs.goal_setting') }}" class="btn goal-btn"><img src="{{ asset('images/settings.svg') }}" alt="アイコン" class="icon">目標体重設定</a>
+            </div>
+
+            <div class="logout-group">
+                <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                    @csrf
+                    <button type="submit" class="btn logout-btn"><img src="{{ asset('images/logout.svg') }}" alt="アイコン" class="icon">ログアウト</button>
+                </form>
+            </div>
         </div>
     </header>
 

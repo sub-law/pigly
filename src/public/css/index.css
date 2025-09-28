@@ -1,11 +1,9 @@
-/* 全体レイアウト */
 .dashboard-container {
     padding: 2rem;
     max-width: 960px;
     margin: 0 auto;
 }
 
-/* グリッドA：目標体重情報 */
 .grid-a {
     display: flex;
     justify-content: space-between;
@@ -38,19 +36,17 @@
     color: #333;
 }
 
-/* グリッドB：検索と追加ボタン */
-
 .date-input,
 .search-btn,
 .add-btn {
     font-size: 16px;
 }
+
 .grid-b-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    /* 必要なら追加 */
     margin-bottom: 1rem;
 }
 
@@ -71,8 +67,6 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f5f5f5;
-    color: #333;
     text-decoration: none;
 }
 
@@ -100,7 +94,6 @@
     background-color: #edf2f7;
 }
 
-/* ログテーブル */
 .log-table {
     width: 100%;
     border-collapse: collapse;
@@ -125,7 +118,6 @@
     background-color: #f0f4ff;
 }
 
-/* 操作アイコン */
 .icon {
     font-size: 1.2rem;
     margin: 0 0.25rem;
@@ -137,7 +129,6 @@
     transform: scale(1.1);
 }
 
-/* ページネーション */
 .pagination {
     margin-top: 1rem;
     display: flex;
@@ -159,7 +150,7 @@
 }
 
 .flash-message {
-    background-color: #d53f8c;
+    background: linear-gradient(to right, #A3A6E1, #FFABD9);
     color: white;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -196,7 +187,6 @@
     display: none;
 }
 
-/* 入力フィールド共通スタイル */
 .modal form input,
 .modal form textarea {
     display: block;
@@ -229,7 +219,6 @@
     white-space: nowrap;
 }
 
-/* ボタンコンテナ：横並び */
 .modal-buttons {
     display: flex;
     justify-content: space-between;
@@ -248,9 +237,8 @@
     text-align: center;
 }
 
-/* 登録ボタン（青系） */
 .btn-submit {
-    background-color: #3182ce;
+    background: linear-gradient(to right, #A3A6E1, #FFABD9);
     color: white;
     border: none;
     padding: 0.5rem 1.2rem;
@@ -265,9 +253,8 @@
     background-color: #2b6cb0;
 }
 
-/* 閉じるボタン（赤系） */
 .btn-close {
-    background-color: #e53e3e;
+    background-color:  #E0DFDE;;
     color: white;
     border: none;
     padding: 0.5rem 1.2rem;
@@ -282,7 +269,6 @@
     background-color: #c53030;
 }
 
-/* 数値入力の矢印を消す */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -302,9 +288,7 @@ input[type="number"] {
 
 .required-tag {
     background-color: #e53e3e;
-    /* 赤背景 */
     color: white;
-    /* 白文字 */
     font-size: 0.75rem;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
@@ -315,6 +299,11 @@ input[type="number"] {
 
 .error-text {
     color: red;
-    font-size: 12px;
-   
+    font-size: 14px;
+    margin-top: 1px;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
 }

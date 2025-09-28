@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>PiGLy ログイン</title>
+    <title>ログイン</title>
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
 
@@ -14,11 +14,21 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <label for="email">メールアドレス</label>
-            <input type="email" name="email" id="email" placeholder="メールアドレスを入力" required autofocus>
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" name="email" id="email" placeholder="メールアドレスを入力">
+                @error('email')
+                <div class="error-text">{{ $message }}</div>
+                @enderror
+            </div>
 
-            <label for="password">パスワード</label>
-            <input type="password" name="password" id="password" placeholder="パスワードを入力" required>
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" name="password" id="password" placeholder="パスワードを入力">
+                @error('password')
+                <div class="error-text">{{ $message }}</div>
+                @enderror
+            </div>
 
             <button type="submit">ログイン</button>
         </form>

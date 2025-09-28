@@ -148,6 +148,11 @@ input[type="number"] {
 
 .error-text {
     color: red;
-    font-size: 12px;
-    margin-top: 4px;
+    font-size: 14px;
+    margin-top: 1px;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
 }

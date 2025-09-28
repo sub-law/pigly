@@ -15,19 +15,23 @@
         <form method="POST" action="{{ route('step2') }}">
             @csrf
 
-            <label for="current_weight">現在の体重 (kg)</label>
-            <input type="number" step="0.1" name="current_weight" id="current_weight"
-                placeholder="現在の体重を入力" >
-            @error('current_weight')
-            <div class="error-text">{{ $message }}</div>
-            @enderror
+            <div class="form-group">
+                <label for="current_weight">現在の体重 (kg)</label>
+                <input type="number" step="0.1" name="current_weight" id="current_weight"
+                    placeholder="現在の体重を入力">
+                @error('current_weight')
+                <div class="error-text">{{ $message }}</div>
+                @enderror
+            </div>
 
-            <label for="target_weight">目標の体重 (kg)</label>
-            <input type="number" step="0.1" name="target_weight" id="target_weight"
-                placeholder="目標の体重を入力" >
-            @error('target_weight')
-            <div class="error-text">{{ $message }}</div>
-            @enderror
+            <div class="form-group">
+                <label for="target_weight">目標の体重 (kg)</label>
+                <input type="number" step="0.1" name="target_weight" id="target_weight"
+                    placeholder="目標の体重を入力">
+                @error('target_weight')
+                <div class="error-text">{{ $message }}</div>
+                @enderror
+            </div>
 
             <button type="submit">アカウント作成</button>
         </form>

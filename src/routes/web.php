@@ -35,4 +35,5 @@ Route::get('/register/step2', [RegisterController::class, 'step2'])->name('step2
 Route::post('/register/step2', [RegisterController::class, 'postStep2'])->name('postStep2');
 
 Route::get('/login', [RegisterController::class, 'login'])->name('login');
+Route::post('/login', [RegisterController::class, 'postLogin'])->name('login.post');
 Route::post('/logout', [RegisterController::class, 'logout'])->name('logout');

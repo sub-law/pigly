@@ -46,6 +46,16 @@
             <a href="#" class="btn add-btn">データ追加</a>
         </div>
 
+        @if(request('from_date') || request('to_date'))
+        <p class="search-summary">
+            {{ request('from_date') ? \Carbon\Carbon::parse(request('from_date'))->format('Y年n月j日') : '未指定' }}
+            ～
+            {{ request('to_date') ? \Carbon\Carbon::parse(request('to_date'))->format('Y年n月j日') : '未指定' }}
+            の検索結果 {{ $weightLogs->total() }}件
+        </p>
+        @endif
+
+
         <!-- モーダル背景 -->
         <div id="modal-overlay" class="modal-overlay hidden"></div>
 
@@ -55,55 +65,65 @@
             <form method="POST" action="{{ route('weight_logs.store') }}">
                 @csrf
 
-                <label class="form-label">
-                    日付 <span class="required-tag">必須</span>
-                </label>
-                <input type="date" name="date" value="{{ date('Y-m-d') }}">
-                @error('date')
-                <div class="error-text">{{ $message }}</div>
-                @enderror
+                <div class="form-group">
+                    <label class="form-label">
+                        日付 <span class="required-tag">必須</span>
+                    </label>
+                    <input type="date" name="date" value="{{ old('date', date('Y-m-d')) }}">
+                    @error('date')
+                    <div class="error-text">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <label class="form-label">
-                    体重 <span class="required-tag">必須</span>
-                </label>
-                <div class="input-with-unit">
-                    <input type="number" name="weight" step="0.1">
-                    <span class="unit">kg</span>
+                <div class="form-group">
+                    <label class="form-label">
+                        体重 <span class="required-tag">必須</span>
+                    </label>
+                    <div class="input-with-unit">
+                        <input type="number" name="weight" step="0.1" value="{{ old('weight') }}">
+                        <span class="unit">kg</span>
+                    </div>
                     @error('weight')
                     <div class="error-text">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <label class="form-label">
-                    摂取カロリー <span class="required-tag">必須</span>
-                </label>
-                <div class="input-with-unit">
-                    <input type="number" name="calories">
-                    <span class="unit">cal</span>
+                <div class="form-group">
+                    <label class="form-label">
+                        摂取カロリー <span class="required-tag">必須</span>
+                    </label>
+                    <div class="input-with-unit">
+                        <input type="number" name="calories" value="{{ old('calories') }}">
+                        <span class="unit">cal</span>
+                    </div>
                     @error('calories')
                     <div class="error-text">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <label class="form-label">
-                    運動時間 <span class="required-tag">必須</span>
-                </label>
-                <div class="input-with-unit">
-                    <input type="time" name="exercise_time">
+                <div class="form-group">
+                    <label class="form-label">
+                        運動時間 <span class="required-tag">必須</span>
+                    </label>
+                    <div class="input-with-unit">
+                        <input type="time" name="exercise_time" value="{{ old('exercise_time') }}">
+                    </div>
                     @error('exercise_time')
                     <div class="error-text">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <label>運動内容</label>
-                <textarea name="exercise_content"></textarea>
-                @error('exercise_content')
-                <div class="error-text">{{ $message }}</div>
-                @enderror
+                <div class="form-group">
+                    <label>運動内容</label>
+                    <textarea name="exercise_content">{{ old('exercise_content') }}</textarea>
+                    @error('exercise_content')
+                    <div class="error-text">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="modal-buttons">
+                    <button type="button" class="btn-close modal-close">戻る</button>
                     <button type="submit" class="btn-submit">登録</button>
-                    <button type="button" class="btn-close modal-close">閉じる</button>
                 </div>
 
             </form>

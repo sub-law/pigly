@@ -15,49 +15,57 @@
             @csrf
             @method('PUT')
 
-            <div class="edit-item">
-                <label>日付</label>
-                <input type="date" name="date" value="{{ old('date', $log->date->format('Y-m-d')) }}">
+            <div class="form-group">
+                <div class="edit-item">
+                    <label>日付</label>
+                    <input type="date" name="date" value="{{ old('date', $log->date->format('Y-m-d')) }}">
+                </div>
                 @error('date')
                 <div class="error-text">{{ $message }}</div>
                 @enderror
             </div>
 
-
-            <div class="edit-item">
-                <label>体重</label>
-                <div class="input-with-unit">
-                    <input type="number" step="0.1" name="weight" value="{{ old('weight', $log->weight) }}">
-                    <span class="unit">kg</span>
+            <div class="form-group">
+                <div class="edit-item">
+                    <label>体重</label>
+                    <div class="input-with-unit">
+                        <input type="number" step="0.1" name="weight" value="{{ old('weight', $log->weight) }}">
+                        <span class="unit">kg</span>
+                    </div>
                     @error('weight')
                     <div class="error-text">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
 
-
-            <div class="edit-item">
-                <label>摂取カロリー</label>
-                <div class="input-with-unit">
-                    <input type="number" name="calories" value="{{ old('calories', $log->calories) }}">
-                    <span class="unit">cal</span>
+            <div class="form-group">
+                <div class="edit-item">
+                    <label>摂取カロリー</label>
+                    <div class="input-with-unit">
+                        <input type="number" name="calories" value="{{ old('calories', $log->calories) }}">
+                        <span class="unit">cal</span>
+                    </div>
                     @error('calories')
                     <div class="error-text">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
 
-            <div class="edit-item">
-                <label>運動時間</label>
-                <input type="time" name="exercise_time" value="{{ old('exercise_time', $log->exercise_time) }}">
+            <div class="form-group">
+                <div class="edit-item">
+                    <label>運動時間</label>
+                    <input type="time" name="exercise_time" value="{{ old('exercise_time', $log->exercise_time) }}">
+                </div>
                 @error('exercise_time')
                 <div class="error-text">{{ $message }}</div>
                 @enderror
             </div>
 
-            <div class="edit-item">
-                <label>運動内容</label>
-                <textarea name="exercise_content"> {{ old('exercise_content', $log->exercise_content) }}</textarea>
+            <div class="form-group">
+                <div class="edit-item">
+                    <label>運動内容</label>
+                    <textarea name="exercise_content"> {{ old('exercise_content', $log->exercise_content) }}</textarea>
+                </div>
                 @error('exercise_content')
                 <div class="error-text">{{ $message }}</div>
                 @enderror

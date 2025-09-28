@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStep1Request;
 use App\Http\Requests\RegisterStep2Request;
+use App\Http\Requests\LoginRequest;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,6 @@ class RegisterController extends Controller
     {
         $validated = $request->validated();
 
-        // セッションに一時保存
         session([
             'register.name' => $validated['name'],
             'register.email' => $validated['email'],
@@ -50,8 +50,8 @@ class RegisterController extends Controller
         $user->weightLogs()->create([
             'date' => now()->format('Y-m-d'),
             'weight' => $validated['current_weight'],
-            'calories' => 0, // 新規登録時は仮の値
-            'exercise_time' => '00:00:00', // 仮の時間
+            'calories' => 0, 
+            'exercise_time' => '00:00:00', 
         ]);
 
         auth()->login($user);
@@ -65,14 +65,26 @@ class RegisterController extends Controller
         return view('auth/login');
     }
 
+    public function postLogin(LoginRequest $request)
+    {
+        $validated = $request->validated();
+
+        if (Auth::attempt([
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+        ])) {
+            $request->session()->regenerate();
+            return redirect()->route('weight_logs.index')->with('status', 'ログインしました');
+        }
+    }
+
     public function logout(Request $request)
     {
-        Auth::logout(); // ユーザーをログアウト
+        Auth::logout(); 
+        $request->session()->invalidate(); 
+        $request->session()->regenerateToken(); 
 
-        $request->session()->invalidate(); // セッションを無効化
-        $request->session()->regenerateToken(); // CSRFトークンを再生成
-
-        return redirect()->route('login'); // ログイン画面へリダイレクト
+        return redirect()->route('login'); 
     }
 
 }

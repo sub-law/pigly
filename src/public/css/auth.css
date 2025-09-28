@@ -43,7 +43,7 @@ body.auth-screen {
 
 .auth-box button {
     width: 100%;
-    background-color: #4299e1;
+    background: linear-gradient(to right, #A3A6E1, #FFABD9);
     color: white;
     padding: 0.5rem;
     border: none;
@@ -70,7 +70,6 @@ body.auth-screen {
     text-decoration: underline;
 }
 
-/* 数値入力の矢印を消す */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -84,5 +83,10 @@ input[type="number"] {
 .error-text {
     color: red;
     font-size: 14px;
-    margin-top: 4px;
+    margin-top: 1px;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
 }
